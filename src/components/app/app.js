@@ -31,20 +31,35 @@ function App() {
     getNameSearch(e.target.value);
   }
 
-  function onClickNexOrPrevtPage(e) {
+  function onClickNexOrPrevtPage(e) {     
+    let numberActiveButtons = document.getElementsByClassName('active');
+    
+    function removeClassActive() {
+       if (numberActiveButtons.length > 0) {
+        Array.from(numberActiveButtons).forEach((e) => {
+          e.classList.remove('active')
+        });
+      }
+    }
+    
 
     if (!isNaN(parseFloat(e.target.innerText))) {
       getnumberActivePage(parseFloat(e.target.innerText));
+      removeClassActive() 
       e.target.classList.add('active');
     }
 
     if (e.target.id === "next" && numberActivePage < Math.ceil(totalResultsSearch / 10)) {
       getnumberActivePage((v) => v + 1);
+      removeClassActive() 
+      document.querySelector(`[data-number="${numberActivePage + 1}"]`).classList.add('active');
     }
 
     if (e.target.id === "prev" && numberActivePage > 1) {
       getnumberActivePage((v) => v - 1);
-    }   
+      removeClassActive() 
+      document.querySelector(`[data-number="${numberActivePage - 1}"]`).classList.add('active');
+    }
   }
       
   useEffect(() => {

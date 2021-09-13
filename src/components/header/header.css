@@ -6,6 +6,19 @@
   justify-content: space-around;
   height: 50px;
   background: linear-gradient(to top, red, blue);
+  color: white;
+}
+
+.header__user {
+  display: flex;
+}
+
+.header__user-icon {
+  width: 20px;
+  height: 20px;
+  background-image: url('../../assets/icon/man.png');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .header__text {
@@ -16,15 +29,20 @@
   border: none;
   outline: none;
   background-color: transparent;
+  color: white;
 }
 
-/* select:after{
-  content: "";
-  display: block;
-  width: 25px;
-  height: 25px;
-  background-image: url("/put_k_strelke");
-  position: absolute;
-  right: 5px;
-  top: 5px;
-} */
+@media only all and (max-width: 600px) {
+  .header {
+    display: block;
+    text-align: center;
+    height: 90px;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .header__user {
+    width: 165px;
+    margin: 10px auto 0;
+  }
+}
